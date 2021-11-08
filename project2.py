@@ -143,50 +143,45 @@ def problem6(cnetid):
 def problem7(cnetid):
     return b''
 
+def extract(bytesArray, slot):
+    res = []
+    for bytes in bytesArray:
+        res.append(hex(bytes[slot]))
+    return res
+
+def countApperance(bytes):
+    dict = {}
+    for byte in bytes:
+        if byte in dict.keys():
+            dict[byte] += 1
+        else:
+            dict[byte] = 1
+    printMaxMinDict(dict)
+
+def printMaxMinDict(dict):
+    values = dict.values()
+    print(max(dict, key = dict.get))
+    print(max(values))
+    print(min(values))
+
 if __name__ == "__main__":
-    # your driver code for testing here
-
-    # example running AES; delete the code below here
-    key = b'ABCDEFGHABCDEFGH'
-    block1 = b'abcdefghabcdefgh'
-    block2 = bytearray(b'abcdefghabcdefgh')
-
-    # we declare the mode to be ECB, but just use it for single-block calls
-    # cipher = AES.new(key, AES.MODE_ECB)
-    # print("\n*****ECB block 1*****")
-    # print(cipher.encrypt(block1))
-
-    # the following call with fail without the converting block2 to bytes
-    # before the call to AES. The AES implementation requires an immutable
-    # object, but bytearray is mutable. Same goes for key in the AES.new call.
-    # print("\n*****ECB block 2*****")
-    # print(cipher.encrypt(bytes(block2)))
-
-    # test query, will hang if off-campus
     id = 'niubuihong'
-    zerosArray = [0x00] * 10000
-    # print(f"\n*****make_query('one',{id},{zerosArray})*****")
-    print(make_query('one',id, ''))
+    numBytes = 30
+    numQueries = 2
+    # your driver code for testing here
+    zeroesArray = [0x00] * numBytes
+    zerosBytes = bytes([0x00] * numBytes)
 
-    # examples below: bytearrays are mutable, which is handy
-    # print("\n*****BYTEARRAYS*****")
-    # print(block2)
-    # block2.extend([0])
-    # print(block2)
-    # block2.extend(block1)
-    # block2 = bytearray(b'abcdefghabcdefgh')
-    # print(block2)
+    bytesArray = []
+    for i in range(0, numQueries):
+        bytesArray.append(make_query('one', 'niubuihong', zerosBytes))
 
-
-    # print("\n*****Bytes/Bytearray/ord/chr*****")
-    # prime_numbers = [0, 97, 0x61, 5, 255] # if something is printatble, it will be printed
-    # # convert list to bytearray
-    # byte_array = bytearray(prime_numbers)
-    # bytes = bytes(prime_numbers)
-    # print(byte_array)
-    # print(bytes)
-    # print('abc'.encode('utf-8'))
-    # print(b'abc'.decode())
-    # print(chr(0x61))
-    # print(hex(ord('a')))
-
+    print(bytesArray)
+    print(extract(bytesArray,0))
+    for i in range(0,numBytes):
+        print(f"****{i}")
+        countApperance(extract(bytesArray, i))
+        print('\n')
+    
+    # print(make_query('one', "niubuihong", bytes(zerosArray)))
+    # print(len(make_query('one', "niubuihong", bytes(zerosArray))))
