@@ -177,14 +177,14 @@ def printDictLargeVal(dict, val):
 
 if __name__ == "__main__":
     id = 'niubuihong'
-    cFromFiveA = make_query("fivea", id, b'')
-    print(len(make_query("fivea", id, b'')))
-    print("\n")
-    print(make_query("fiveb", id, b''))
-    query = b'k\xe31\x99\x94REU\xbadV\xa15j!!%|X3\xd9\xae|\xf7\xf7\xaa\x98=|\xa2\xa5'
-    print(make_query("fivec", id, cFromFiveA[len(cFromFiveA)-16 : len(cFromFiveA)]))
+    cFromA = make_query("fivea", id, b'')
+    # print(len(make_query("fivea", id, b'')))
+    # print("\n")
+    # print(make_query("fiveb", id, b''))
+    # query = b'k\xe31\x99\x94REU\xbadV\xa15j!!%|X3\xd9\xae|\xf7\xf7\xaa\x98=|\xa2\xa5'
+    # print(make_query("fivec", id, cFromA[len(cFromA)-16 : len(cFromA)]))
 
-    professor = cFromFiveA[len(cFromFiveA)-16 : len(cFromFiveA)]
+    professor = cFromA[len(cFromA)-16 : len(cFromA)]
     cFromB = make_query("fiveb", id, b'1')
     username = cFromB[0 : 16]
 
