@@ -156,32 +156,42 @@ def countApperance(bytes):
             dict[byte] += 1
         else:
             dict[byte] = 1
-    printMaxMinDict(dict)
+    # printMaxMinDict(dict)
+    printDictLargeVal(dict, 4)
+    # printDict(dict)
 
 def printMaxMinDict(dict):
     values = dict.values()
-    print(max(dict, key = dict.get))
+    print(max(dict, key = dict.get), end = " : ")
     print(max(values))
-    print(min(values))
+    # print(min(values))
+
+def printDict(dict):
+    for key in dict:
+        print(key, ' : ', dict[key])
+
+def printDictLargeVal(dict, val):
+    for key in dict:
+        if dict[key] >= val:
+            print(key, ' : ', dict[key])
 
 if __name__ == "__main__":
     id = 'niubuihong'
     numBytes = 30
-    numQueries = 2
+    numQueries = 100
     # your driver code for testing here
     zeroesArray = [0x00] * numBytes
     zerosBytes = bytes([0x00] * numBytes)
+    print(zerosBytes)
 
     bytesArray = []
     for i in range(0, numQueries):
-        bytesArray.append(make_query('one', 'niubuihong', zerosBytes))
+        bytesArray.append(make_query('one', id, zerosBytes))
 
-    print(bytesArray)
-    print(extract(bytesArray,0))
     for i in range(0,numBytes):
         print(f"****{i}")
         countApperance(extract(bytesArray, i))
         print('\n')
     
-    # print(make_query('one', "niubuihong", bytes(zerosArray)))
-    # print(len(make_query('one', "niubuihong", bytes(zerosArray))))
+    # print(make_query('one', id, bytes(zerosArray)))
+    # print(len(make_query('one', id, bytes(zerosArray))))
